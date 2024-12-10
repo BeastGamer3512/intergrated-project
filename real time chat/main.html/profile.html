@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHAT ROOM WITH FRIENDS</title>
+    <script src="../main.js/script.js"></script> <!-- Link to the JavaScript file -->
+    <link rel="stylesheet" href="../main.css/styles.css"> <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Icons -->
+
+</head>
+
+<body class="light-mode"> <!-- Default mode is light -->
+
+    <!-- Header Section -->
+    <header>
+        <h1>CHAT ROOM WITH FRIENDS</h1>
+
+    
+        <h1>User Profile</h1>
+
+        <!-- Top-right corner icons for settings and dark/light mode -->
+        <div class="icon-container">
+            <i class="fa fa-cog" id="settingsIcon" onclick="openSettings()"></i>
+            <i class="fa fa-sun" id="modeIcon" onclick="toggleMode()"></i>
+        </div>
+    </header>
+
+    <!-- Profile Container -->
+    <div class="profile-container">
+        <h2>Edit Your Profile</h2>
+
+        <!-- Profile Picture -->
+        <!-- <div class="profile-pic-container">
+            <img src="default-profile.png" alt="Profile Picture" class="profile-picture" id="profilePic">
+            <input type="file" id="profileImage" accept="image/*" onchange="previewImage(event)">
+        </div> -->
+
+        <!-- Scrollable Profile Edit Form -->
+        <div class="scrollable-form">
+            <form class="profile-form" id="profileForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+
+                <label for="bio"> About Me:</label>
+                <textarea id="bio" placeholder="Write a short bio..."></textarea>
+
+                <label for="notifications">Notifications:</label>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="notifications" checked>
+                    <label for="notifications" class="switch"></label>
+                </div>
+
+                <button type="submit">Save Changes</button>
+            </form>
+            
+        </div>
+    </div>
+    
+
+
+    <!-- JavaScript for Profile Picture Preview and Dark/Light Mode -->
+    <script>
+
+
+        // Preview uploaded profile picture
+        function previewImage(event) {
+            const image = document.getElementById('profilePic');
+            image.src = URL.createObjectURL(event.target.files[0]);
+
+        }
+
+
+
+        // Handle form submission and redirect to dashboard
+        document.getElementById('profileForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert("Profile updated!");
+            window.location.href = "../main.html/chat.html";
+        });
+
+        // Toggle between dark and light mode
+        function toggleMode() {
+            const body = document.body;
+            body.classList.toggle('light-mode');
+            body.classList.toggle('dark-mode');
+            updateIcon();  // Change the icon based on mode
+        }
+
+        // Update the dark/light mode icon
+        function updateIcon() {
+            const modeIcon = document.getElementById("modeIcon");
+            if (document.body.classList.contains('dark-mode')) {
+                modeIcon.classList.remove('fa-sun');
+                modeIcon.classList.add('fa-moon');  // Change to moon icon for dark mode
+            } else {
+                modeIcon.classList.remove('fa-moon');
+                modeIcon.classList.add('fa-sun');  // Change to sun icon for light mode
+            }
+        }
+
+        // Open settings when the settings icon is clicked
+        function openSettings() {
+            alert("Settings options will go here!");
+            // Add logic for settings functionality here
+        }
+
+
+        
+    
+    </script>
+    
+</body>
+</html>
